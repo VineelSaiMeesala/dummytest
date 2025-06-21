@@ -1,0 +1,126 @@
+{
+  "info": {
+    "_testmasterhub_id": "b15b861f-6f92-46cc-b08a-b33dbd81e707",
+    "_exporter_id": "055675e2-772a-436d-9711-fd33f40a58e4",
+    "name": "TestCS01",
+    "description": "This is a new collection",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "id": "a84a68f9-b6dc-4bd4-b3ea-c6a453f3cdca",
+      "name": "TestRS01",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "var JsonData = TMH.response.json();\n\n\nTMH.test(\"Status code should be 200\", () => {\n  TMH.expect(TMH.response.status()).toBe(200);\n});\n\n\nTMH.test(\"Response should have openapi property\", () => {\n  TMH.expect(JsonData).toHaveProperty(\"openapi\");\n});\n\n\nTMH.test(\"openapi version should be 3.0.1\", () => {\n  TMH.expect(JsonData.openapi).toBe(\"3.0.1\");\n});\n\n\nTMH.test(\"info property should be an object\", () => {\n  TMH.expect(JsonData.info).toBeType(\"object\");\n});\n\n\nTMH.test(\"servers should be an array\", () => {\n  TMH.expect(JsonData.servers).toBeType(\"array\");\n});"
+            ],
+            "type": "text/javascript",
+            "packages": {}
+          }
+        },
+        {
+          "listen": "prerequest",
+          "script": {
+            "exec": [],
+            "type": "text/javascript",
+            "packages": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept-Encoding",
+            "value": "gzip, deflate, br"
+          },
+          {
+            "key": "User-Agent",
+            "value": "TestMasterHub/1.0 (Windows NT 10.0; Win64; x64)"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json"
+          },
+          {
+            "key": "Connection",
+            "value": "keep-alive"
+          }
+        ],
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "",
+              "type": "string"
+            }
+          ]
+        },
+        "url": {
+          "raw": "https://api.apis.guru/v2/specs/abstractapi.com/geolocation/1.0.0/openapi.json",
+          "protocol": "https",
+          "host": [
+            "api",
+            "apis",
+            "guru"
+          ],
+          "path": [
+            "v2",
+            "specs",
+            "abstractapi.com",
+            "geolocation",
+            "1.0.0",
+            "openapi.json"
+          ],
+          "variable": [],
+          "query": []
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [],
+      "data": {
+        "isran": true
+      }
+    }
+  ],
+  "auth": {
+    "type": "noauth",
+    "basic": []
+  },
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [],
+  "id": "b15b861f-6f92-46cc-b08a-b33dbd81e707"
+}
