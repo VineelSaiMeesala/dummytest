@@ -1,15 +1,15 @@
 {
   "info": {
-    "_testmasterhub_id": "9822e35e-ff50-4146-a19b-302dbefecf24",
-    "_exporter_id": "0eaf1feb-3192-4840-a724-1790be59ecab",
-    "name": "Wis01",
+    "_testmasterhub_id": "89e54a9d-f7b7-4ef1-b95a-e52dc02ac3e4",
+    "_exporter_id": "27ded19e-ec8d-4f2d-8448-ed2cd3d815bd",
+    "name": "Wis02",
     "description": "This is a new collection",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
   },
   "item": [
     {
-      "id": "345cf015-dc01-45b3-9107-4adbf3c2a8be",
-      "name": "Dummy",
+      "id": "17c8c3ca-d1ac-43dc-ae52-4affb6efa640",
+      "name": "Req09",
       "event": [
         {
           "listen": "test",
@@ -59,24 +59,17 @@
           ]
         },
         "url": {
-          "raw": "https://reqres.in/api/users/:id",
+          "raw": "https://github.com/VineelSaiMeesala/dummytest.git",
           "protocol": "https",
           "host": [
-            "reqres",
-            "in"
+            "github",
+            "com"
           ],
           "path": [
-            "api",
-            "users",
-            ":id"
+            "VineelSaiMeesala",
+            "dummytest.git"
           ],
-          "variable": [
-            {
-              "key": "id",
-              "value": "1",
-              "description": ""
-            }
-          ],
+          "variable": [],
           "query": []
         },
         "body": {
@@ -92,12 +85,7 @@
       "response": [],
       "data": {
         "isran": false
-      },
-      "auth": {
-        "type": "noauth",
-        "basic": []
-      },
-      "variable": []
+      }
     }
   ],
   "auth": {
@@ -127,5 +115,5 @@
     }
   ],
   "variable": [],
-  "id": "9822e35e-ff50-4146-a19b-302dbefecf24"
+  "id": "89e54a9d-f7b7-4ef1-b95a-e52dc02ac3e4"
 }
