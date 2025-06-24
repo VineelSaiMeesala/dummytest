@@ -1,0 +1,244 @@
+{
+  "info": {
+    "_postman_id": "040a0360-3c81-407a-826d-b56520706421",
+    "name": "NSE india",
+    "description": "This API get all Price details of Particular Stock",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "21787997"
+  },
+  "item": [
+    {
+      "id": "c9004496-f7cd-4505-99f5-2a89fef562f9",
+      "name": "NSE Price",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "var JsonData = TMH.response.json();\n\n\nTMH.test(\"Status code should be 401\", () => {\n  TMH.expect(TMH.response.status()).toBe(401);\n});\n\n\nTMH.test(\"Response should contain error message\", () => {\n  TMH.expect(JsonData).toHaveProperty(\"error\");\n});\n\n\nTMH.test(\"Error message should be a string\", () => {\n  TMH.expect(JsonData.error).toBeType(\"string\");\n});\n\n\nTMH.test(\"Error message should not be empty\", () => {\n  TMH.expect(JsonData.error.length).toBeGreaterThan(0);\n});\n\n\nTMH.test(\"Response should have requestUrl\", () => {\n  TMH.expect(JsonData).toHaveProperty(\"requestUrl\");\n});"
+            ],
+            "type": "text/javascript",
+            "packages": {}
+          }
+        },
+        {
+          "listen": "prerequest",
+          "script": {
+            "exec": [],
+            "type": "text/javascript",
+            "packages": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept-Encoding",
+            "value": "gzip, deflate, br"
+          },
+          {
+            "key": "User-Agent",
+            "value": "TestMasterHub/1.0 (Windows NT 10.0; Win64; x64)"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json"
+          },
+          {
+            "key": "Connection",
+            "value": "keep-alive"
+          }
+        ],
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "",
+              "type": "string"
+            }
+          ]
+        },
+        "url": {
+          "raw": "https://www.nseindia.com/api/quote-equity?symbol=ITC",
+          "protocol": "https",
+          "host": [
+            "www",
+            "nseindia",
+            "com"
+          ],
+          "path": [
+            "api",
+            "quote-equity?symbol=ITC"
+          ],
+          "variable": [
+            {
+              "key": "",
+              "value": "",
+              "description": ""
+            }
+          ],
+          "query": [
+            {
+              "key": "symbol",
+              "value": "ITC",
+              "description": ""
+            }
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [],
+      "data": {
+        "isran": true
+      },
+      "auth": {
+        "type": "noauth"
+      },
+      "variable": [
+        {
+          "key": "APIkey",
+          "value": "PO6JU6JAH0MXVI11",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "StockOverview",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://www.alphavantage.co/query?function=OVERVIEW&symbol=APPLE&apikey={{APIkey}}}",
+          "protocol": "https",
+          "host": [
+            "www",
+            "alphavantage",
+            "co"
+          ],
+          "path": [
+            "query"
+          ],
+          "query": [
+            {
+              "key": "function",
+              "value": "OVERVIEW"
+            },
+            {
+              "key": "symbol",
+              "value": "APPLE"
+            },
+            {
+              "key": "apikey",
+              "value": "{{APIkey}}}"
+            }
+          ]
+        }
+      },
+      "response": [],
+      "id": "2a11fa66-917e-48a0-ba2b-887333a79ff2"
+    },
+    {
+      "name": "https://real-time-finance-data.p.rapidapi.com/market-trends?trend_type=GAINERS&country=IN&language=en",
+      "request": {
+        "auth": {
+          "type": "apikey",
+          "apikey": [
+            {
+              "key": "key",
+              "value": "f8291c67admsh0f86d252f35a9a3p1dd96ajsnb8daba0c0b90",
+              "type": "string"
+            },
+            {
+              "key": "value",
+              "value": "5OI499HAJGGDYVWS",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [
+          {
+            "key": "Host",
+            "value": "real-time-finance-data.p.rapidapi.com",
+            "type": "text"
+          },
+          {
+            "key": "X-RapidAPI-Key",
+            "value": "f8291c67admsh0f86d252f35a9a3p1dd96ajsnb8daba0c0b90",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "https://real-time-finance-data.p.rapidapi.com/market-trends?trend_type=GAINERS&country=IN&language=en",
+          "protocol": "https",
+          "host": [
+            "real-time-finance-data",
+            "p",
+            "rapidapi",
+            "com"
+          ],
+          "path": [
+            "market-trends"
+          ],
+          "query": [
+            {
+              "key": "trend_type",
+              "value": "GAINERS"
+            },
+            {
+              "key": "country",
+              "value": "IN"
+            },
+            {
+              "key": "language",
+              "value": "en"
+            }
+          ]
+        }
+      },
+      "response": [],
+      "id": "47562e00-7449-4233-9bac-f6bc0e21a9b0"
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "APIkey",
+      "value": "PO6JU6JAH0MXVI11",
+      "type": "string"
+    }
+  ],
+  "auth": {
+    "type": "noauth"
+  },
+  "id": "040a0360-3c81-407a-826d-b56520706421"
+}
