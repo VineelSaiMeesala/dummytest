@@ -51,17 +51,10 @@
           }
         ],
         "auth": {
-          "type": "bearer",
-          "bearer": [
-            {
-              "key": "token",
-              "value": "",
-              "type": "string"
-            }
-          ]
+          "type": "none"
         },
         "url": {
-          "raw": "https://www.nseindia.com/api/quote-equity?symbol=ITC",
+          "raw": "https://www.nseindia.com/api/quote-equity?symbol=JIO",
           "protocol": "https",
           "host": [
             "www",
@@ -70,7 +63,7 @@
           ],
           "path": [
             "api",
-            "quote-equity?symbol=ITC"
+            "quote-equity?symbol=JIO"
           ],
           "variable": [
             {
@@ -82,7 +75,7 @@
           "query": [
             {
               "key": "symbol",
-              "value": "ITC",
+              "value": "JIO",
               "description": ""
             }
           ]
@@ -100,17 +93,7 @@
       "response": [],
       "data": {
         "isran": true
-      },
-      "auth": {
-        "type": "noauth"
-      },
-      "variable": [
-        {
-          "key": "APIkey",
-          "value": "PO6JU6JAH0MXVI11",
-          "type": "string"
-        }
-      ]
+      }
     },
     {
       "name": "StockOverview",
@@ -215,6 +198,7 @@
       "listen": "prerequest",
       "script": {
         "type": "text/javascript",
+        "packages": {},
         "exec": [
           ""
         ]
@@ -224,6 +208,7 @@
       "listen": "test",
       "script": {
         "type": "text/javascript",
+        "packages": {},
         "exec": [
           ""
         ]
@@ -238,7 +223,14 @@
     }
   ],
   "auth": {
-    "type": "noauth"
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "2151f4fb2958f90211070e0fc586bb612315080af145504380eda332498e9e5e",
+        "type": "string"
+      }
+    ]
   },
   "id": "040a0360-3c81-407a-826d-b56520706421"
 }
