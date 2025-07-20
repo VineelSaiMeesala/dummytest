@@ -61,7 +61,7 @@
           ]
         },
         "url": {
-          "raw": "https://bwapi.vercel.app/api/v1/comments/Addcomment/",
+          "raw": "https://bwapi.vercel.app/api/v1/subscriber/getSubsciberEmail",
           "protocol": "https",
           "host": [
             "reqres",
