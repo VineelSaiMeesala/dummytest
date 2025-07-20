@@ -61,7 +61,7 @@
           ]
         },
         "url": {
-          "raw": "https://reqres.in/api/users/:id",
+          "raw": "https://bwapi.vercel.app/api/v1/comments/Addcomment/",
           "protocol": "https",
           "host": [
             "reqres",
