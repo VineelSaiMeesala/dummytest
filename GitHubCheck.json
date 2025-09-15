@@ -64,12 +64,12 @@
           "raw": "https://restful-booker.herokuapp.com/booking/:id",
           "protocol": "https",
           "host": [
-            "reqres",
-            "in"
+            "restful-booker",
+            "herokuapp",
+            "com"
           ],
           "path": [
-            "api",
-            "users",
+            "booking",
             ":id"
           ],
           "variable": [
@@ -93,7 +93,7 @@
       },
       "response": [],
       "data": {
-        "isran": true
+        "isran": false
       }
     }
   ],
