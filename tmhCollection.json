@@ -1,15 +1,20 @@
 {
   "info": {
-    "_testmasterhub_id": "89e54a9d-f7b7-4ef1-b95a-e52dc02ac3e4",
-    "_exporter_id": "27ded19e-ec8d-4f2d-8448-ed2cd3d815bd",
-    "name": "Wis02",
+    "_testmasterhub_id": "309516a2-faa2-422b-9911-b682c8467d02",
+    "_exporter_id": "405646b3-51fd-465b-ba55-8634477206fe",
+    "name": "tmhCollection",
     "description": "This is a new collection",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
   },
   "item": [
     {
-      "id": "17c8c3ca-d1ac-43dc-ae52-4affb6efa640",
-      "name": "Req09",
+      "id": "4b332ff4-5758-4896-be06-3efffb20d021",
+      "name": "TMHRestGet",
+      "requestMode": "rest",
+      "response": [],
+      "data": {
+        "isran": false
+      },
       "event": [
         {
           "listen": "test",
@@ -37,7 +42,7 @@
           },
           {
             "key": "User-Agent",
-            "value": "TestMasterHub/1.0 (Windows NT 10.0; Win64; x64)"
+            "value": "TestMasterHub/1.0"
           },
           {
             "key": "Accept",
@@ -59,15 +64,14 @@
           ]
         },
         "url": {
-          "raw": "https://github.com/VineelSaiMeesala/dummytest.git",
+          "raw": "https://example.com/get",
           "protocol": "https",
           "host": [
-            "github",
+            "example",
             "com"
           ],
           "path": [
-            "VineelSaiMeesala",
-            "dummytest.git"
+            "get"
           ],
           "variable": [],
           "query": []
@@ -81,10 +85,6 @@
             }
           }
         }
-      },
-      "response": [],
-      "data": {
-        "isran": false
       }
     }
   ],
@@ -115,5 +115,5 @@
     }
   ],
   "variable": [],
-  "id": "89e54a9d-f7b7-4ef1-b95a-e52dc02ac3e4"
+  "id": "309516a2-faa2-422b-9911-b682c8467d02"
 }

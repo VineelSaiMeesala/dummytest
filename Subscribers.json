@@ -2,19 +2,19 @@
   "info": {
     "_postman_id": "d6f74a33-cc16-405f-a1d3-c5e78bde803e",
     "name": "Subscribers",
+    "description": "",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
     "_exporter_id": "21787997"
   },
   "item": [
     {
-      "id": "91cc1732-312d-4144-960e-d5614a290b9e",
       "name": "getSubsciberEmail",
       "event": [
         {
           "listen": "test",
           "script": {
             "exec": [
-              "pm.test(\"Status code is 200\", function () {\r\n    pm.response.to.have.status(200);\r\n});"
+              "var JsonData = TMH.response.json();\n\nTMH.env.set(\"Name\",JsonData[0].email);\n\n// --- MIGRATED EXISTING TESTS ---\nTMH.test(\"Status code is 200\", () => {\n    TMH.expect(TMH.response.status()).toBe(200);\n});\n\n// --- NEW AI GENERATED TESTS ---\nTMH.test(\"Status code should be 200\", () => {\n  TMH.expect(TMH.response.status()).toBe(200);\n});\n\nTMH.test(\"Response should be a non-empty array\", () => {\n  TMH.expect(JsonData.length).toBeGreaterThan(0);\n});\n\nTMH.test(\"First subscriber object should have an 'email' property\", () => {\n  TMH.expect(JsonData[0]).toHaveProperty(\"email\");\n});\n\nTMH.test(\"The 'verified' property in the first subscriber should be a boolean\", () => {\n  TMH.expect(JsonData[0].verified).toBeType(\"boolean\");\n});\n\nTMH.test(\"The email for the first subscriber should be 'tets2@email.com'\", () => {\n  TMH.expect(JsonData[0].email).toBe(\"tets2@email.com\");\n});"
             ],
             "type": "text/javascript",
             "packages": {}
@@ -29,6 +29,11 @@
           }
         }
       ],
+      "response": [],
+      "requestMode": "rest",
+      "data": {
+        "isran": false
+      },
       "request": {
         "method": "GET",
         "header": [
@@ -47,30 +52,28 @@
           {
             "key": "Connection",
             "value": "keep-alive"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
           }
         ],
         "auth": {
-          "type": "bearer",
-          "bearer": [
-            {
-              "key": "token",
-              "value": "",
-              "type": "string"
-            }
-          ]
+          "type": "none"
         },
         "url": {
           "raw": "{{APIUrl}}/api/v1/subscriber/getSubsciberEmail",
           "protocol": "http",
-          "host": [],
-          "path": [],
-          "variable": [
-            {
-              "key": "",
-              "value": "",
-              "description": ""
-            }
+          "host": [
+            "{{APIUrl}}"
           ],
+          "path": [
+            "api",
+            "v1",
+            "subscriber",
+            "getSubsciberEmail"
+          ],
+          "variable": [],
           "query": []
         },
         "body": {
@@ -83,6 +86,12 @@
           }
         }
       },
+      "id": "837b004a-b42f-4427-b928-819b85b6a807"
+    },
+    {
+      "id": "5efa4ca8-3537-4a56-b7d0-edadc34fec02",
+      "name": "GraphQL 2",
+      "requestMode": "graphql",
       "response": [],
       "data": {
         "isran": false
@@ -90,177 +99,41 @@
       "auth": {
         "type": "noauth"
       },
-      "variable": []
-    },
-    {
-      "id": "24fcbffa-8946-4e38-9ad2-d2cd35d48965",
-      "name": "addSubsciberEmail",
-      "event": [
-        {
-          "listen": "test",
-          "script": {
-            "exec": [
-              "// ❌ No TMH.test blocks found in AI response\n// // 💥 Gemini Error: [GoogleGenerativeAI Error]: Error fetching from https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent: [429 Too Many Requests] You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. [{\"@type\":\"type.googleapis.com/google.rpc.QuotaFailure\",\"violations\":[{\"quotaMetric\":\"generativelanguage.googleapis.com/generate_content_free_tier_requests\",\"quotaId\":\"GenerateRequestsPerMinutePerProjectPerModel-FreeTier\",\"quotaDimensions\":{\"location\":\"global\",\"model\":\"gemini-2.5-pro\"},\"quotaValue\":\"2\"}]},{\"@type\":\"type.googleapis.com/google.rpc.Help\",\"links\":[{\"description\":\"Learn more about Gemini API quotas\",\"url\":\"https://ai.google.dev/gemini-api/docs/rate-limits\"}]},{\"@type\":\"type.googleapis.com/google.rpc.RetryInfo\",\"retryDelay\":\"26s\"}]"
-            ],
-            "type": "text/javascript",
-            "packages": {}
-          }
-        },
-        {
-          "listen": "prerequest",
-          "script": {
-            "exec": [],
-            "type": "text/javascript",
-            "packages": {}
-          }
-        }
-      ],
+      "variable": [],
       "request": {
         "method": "POST",
         "header": [
           {
-            "key": "Accept-Encoding",
-            "value": "gzip, deflate, br"
-          },
-          {
-            "key": "User-Agent",
-            "value": "TestMasterHub/1.0 (Windows NT 10.0; Win64; x64)"
-          },
-          {
-            "key": "Accept",
+            "key": "Content-Type",
             "value": "application/json"
-          },
-          {
-            "key": "Connection",
-            "value": "keep-alive"
           }
         ],
-        "auth": {
-          "type": "bearer",
-          "bearer": [
-            {
-              "key": "token",
-              "value": "",
-              "type": "string"
-            }
-          ]
-        },
         "url": {
-          "raw": "{{APIUrl}}/api/v1/subscriber/addSubsciberEmail",
-          "protocol": "http",
-          "host": [],
-          "path": [],
-          "variable": [
-            {
-              "key": "",
-              "value": "",
-              "description": ""
-            }
-          ],
-          "query": [
-            {
-              "key": "email",
-              "value": "{{$randomEmail}}",
-              "description": ""
-            }
-          ]
+          "raw": "https://graphql.anilist.co/"
         },
         "body": {
-          "mode": "raw",
-          "raw": "{\r\n    \"email\":\"errorcommingon0109@email.com\"\r\n}",
-          "options": {
-            "raw": {
-              "language": "json"
-            }
+          "mode": "graphql",
+          "graphql": {
+            "query": "{  Media(id: $id) {    format    genres    tags {      $id    }    averageScore  }}",
+            "variables": "{ \"$id\": \"{{Name}}\" }",
+            "operationName": ""
           }
         }
       },
-      "response": [],
-      "data": {
-        "isran": true
-      },
-      "auth": {
-        "type": "noauth"
-      },
-      "variable": []
+      "graphql": {
+        "url": "https://graphql.anilist.co/",
+        "query": "{  Media(id: $id) {    format    genres    tags {      $id    }    averageScore  }}",
+        "variables": "{ \"$id\": \"{{Name}}\" }",
+        "operationName": "",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      }
     },
     {
-      "id": "fe701eec-7856-4951-9c64-5b569a6a7173",
-      "name": "delSubsciberEmail",
-      "event": [
-        {
-          "listen": "test",
-          "script": {
-            "exec": [
-              "pm.test(\"Status code is 200\", function () {\r\n    pm.response.to.have.status(200);\r\n});"
-            ],
-            "type": "text/javascript",
-            "packages": {}
-          }
-        },
-        {
-          "listen": "prerequest",
-          "script": {
-            "exec": [],
-            "type": "text/javascript",
-            "packages": {}
-          }
-        }
-      ],
-      "request": {
-        "method": "DELETE",
-        "header": [
-          {
-            "key": "Accept-Encoding",
-            "value": "gzip, deflate, br"
-          },
-          {
-            "key": "User-Agent",
-            "value": "TestMasterHub/1.0 (Windows NT 10.0; Win64; x64)"
-          },
-          {
-            "key": "Accept",
-            "value": "application/json"
-          },
-          {
-            "key": "Connection",
-            "value": "keep-alive"
-          }
-        ],
-        "auth": {
-          "type": "bearer",
-          "bearer": [
-            {
-              "key": "token",
-              "value": "{{token}}",
-              "type": "string"
-            }
-          ]
-        },
-        "url": {
-          "raw": "{{APIUrl}}/api/v1/subscriber/delSubsciberEmail/:id",
-          "protocol": "http",
-          "host": [],
-          "path": [],
-          "variable": [
-            {
-              "key": "id",
-              "value": "66b898161b79dc00e9ae0945",
-              "description": ""
-            }
-          ],
-          "query": []
-        },
-        "body": {
-          "mode": "raw",
-          "raw": "",
-          "options": {
-            "raw": {
-              "language": "json"
-            }
-          }
-        }
-      },
+      "id": "a9773dd1-0fb7-42d8-a5f0-cc1555149a61",
+      "name": "WebSocket 3",
+      "requestMode": "websocket",
       "response": [],
       "data": {
         "isran": false
@@ -268,7 +141,44 @@
       "auth": {
         "type": "noauth"
       },
-      "variable": []
+      "variable": [],
+      "websocket": {
+        "url": "ws://echo.websocket.org/"
+      }
+    },
+    {
+      "name": "gRPC 4",
+      "event": [],
+      "response": [],
+      "requestMode": "grpc",
+      "data": {
+        "isran": false
+      },
+      "grpc": {
+        "url": "localhost:50051",
+        "service": "greeter.Greeter",
+        "method": "SayHello",
+        "message": "{\"name\": \"{{Name}}\"}",
+        "metadata": {},
+        "streamType": "unary",
+        "secure": false,
+        "protoFile": {
+          "name": "greeter.proto",
+          "content": "syntax = \"proto3\";\r\n\r\npackage greeter;\r\n\r\nservice Greeter {\r\n  rpc SayHello (HelloRequest) returns (HelloReply);\r\n}\r\n\r\nmessage HelloRequest {\r\n  string name = 1;\r\n}\r\n\r\nmessage HelloReply {\r\n  string message = 1;\r\n}"
+        }
+      },
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "localhost:50051",
+          "host": [
+            "localhost:50051"
+          ],
+          "path": []
+        },
+        "description": "gRPC Request: greeter.Greeter/SayHello"
+      },
+      "id": "7fad4d43-b7bc-4d31-87cc-c843fa836150"
     }
   ],
   "auth": {
@@ -291,7 +201,7 @@
         "type": "text/javascript",
         "packages": {},
         "exec": [
-          ""
+          "tmh"
         ]
       }
     }
