@@ -1,0 +1,297 @@
+{
+  "info": {
+    "_testmasterhub_id": "3c23a3be-719d-4222-be61-810a8e568fb3",
+    "_exporter_id": "bf9768e4-3d52-4078-bef9-f6982994bee1",
+    "name": "GraphQl",
+    "description": "This is a new collection",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "id": "25dd361a-058b-43b1-8a02-7158e36a969d",
+      "name": "SpaceX",
+      "requestMode": "graphql",
+      "response": [],
+      "data": {
+        "isran": false
+      },
+      "auth": {
+        "type": "noauth",
+        "basic": []
+      },
+      "variable": [],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "https://spacex-production.up.railway.app/"
+        },
+        "body": {
+          "mode": "graphql",
+          "graphql": {
+            "query": "query Ships {\n  ships {\n    id\n    model\n    name\n    type\n    status\n  }\n}",
+            "variables": "{\n  \n}",
+            "operationName": ""
+          }
+        }
+      },
+      "graphql": {
+        "url": "https://spacex-production.up.railway.app/",
+        "query": "query Ships {\n  ships {\n    id\n    model\n    name\n    type\n    status\n  }\n}",
+        "variables": "{\n  \n}",
+        "operationName": "",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      }
+    },
+    {
+      "id": "dbedaf34-dbb9-49be-81a9-9e064b246826",
+      "name": "SpaceX-User",
+      "requestMode": "graphql",
+      "response": [],
+      "data": {
+        "isran": false
+      },
+      "auth": {
+        "type": "noauth",
+        "basic": []
+      },
+      "variable": [],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "https://spacex-production.up.railway.app/"
+        },
+        "body": {
+          "mode": "graphql",
+          "graphql": {
+            "query": "query ($name: String!) {\n  __type(name: $name) {\n   name \n  }\n}",
+            "variables": "{\n  \"name\": \"users\"\n}",
+            "operationName": ""
+          }
+        }
+      },
+      "graphql": {
+        "url": "https://spacex-production.up.railway.app/",
+        "query": "query ($name: String!) {\n  __type(name: $name) {\n   name \n  }\n}",
+        "variables": "{\n  \"name\": \"users\"\n}",
+        "operationName": "",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      }
+    },
+    {
+      "id": "dac3ac7b-7f7b-4da1-b677-9127fef29489",
+      "name": "SpaceX-Flight",
+      "requestMode": "graphql",
+      "response": [],
+      "data": {
+        "isran": false
+      },
+      "auth": {
+        "type": "noauth",
+        "basic": []
+      },
+      "variable": [],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "https://spacex-production.up.railway.app/"
+        },
+        "body": {
+          "mode": "graphql",
+          "graphql": {
+            "query": "query Dragons {\n  dragons {\n    name\n    first_flight\n    diameter {\n      feet\n    }\n    launch_payload_mass {\n      lb\n    }\n  }\n}",
+            "variables": "{\n  \n}",
+            "operationName": ""
+          }
+        }
+      },
+      "graphql": {
+        "url": "https://spacex-production.up.railway.app/",
+        "query": "query Dragons {\n  dragons {\n    name\n    first_flight\n    diameter {\n      feet\n    }\n    launch_payload_mass {\n      lb\n    }\n  }\n}",
+        "variables": "{\n  \n}",
+        "operationName": "",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      }
+    },
+    {
+      "id": "40e8a73e-fc3a-43ae-997e-27be464ca088",
+      "name": "swapi",
+      "requestMode": "graphql",
+      "response": [],
+      "data": {
+        "isran": false
+      },
+      "auth": {
+        "type": "noauth",
+        "basic": []
+      },
+      "variable": [],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "https://swapi-graphql.netlify.app/.netlify/functions/index"
+        },
+        "body": {
+          "mode": "graphql",
+          "graphql": {
+            "query": "query Query {\n  allFilms {\n    films {\n      title\n      director\n      releaseDate\n      speciesConnection {\n        species {\n          name\n          classification\n          homeworld {\n            name\n          }\n        }\n      }\n    }\n  }\n}\n",
+            "variables": "{\n  \n}",
+            "operationName": ""
+          }
+        }
+      },
+      "graphql": {
+        "url": "https://swapi-graphql.netlify.app/.netlify/functions/index",
+        "query": "query Query {\n  allFilms {\n    films {\n      title\n      director\n      releaseDate\n      speciesConnection {\n        species {\n          name\n          classification\n          homeworld {\n            name\n          }\n        }\n      }\n    }\n  }\n}\n",
+        "variables": "{\n  \n}",
+        "operationName": "",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      }
+    },
+    {
+      "id": "ff5f6bfc-8901-482b-ab24-ca4487d234ab",
+      "name": "Countries",
+      "requestMode": "graphql",
+      "response": [],
+      "data": {
+        "isran": false
+      },
+      "auth": {
+        "type": "noauth",
+        "basic": []
+      },
+      "variable": [],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "https://countries.trevorblades.com/graphql"
+        },
+        "body": {
+          "mode": "graphql",
+          "graphql": {
+            "query": "query Query {\n  country(code: \"BR\") {\n    name\n    native\n    capital\n    emoji\n    currency\n    languages {\n      code\n      name\n    }\n  }\n}",
+            "variables": "{\n  \n}",
+            "operationName": ""
+          }
+        }
+      },
+      "graphql": {
+        "url": "https://countries.trevorblades.com/graphql",
+        "query": "query Query {\n  country(code: \"BR\") {\n    name\n    native\n    capital\n    emoji\n    currency\n    languages {\n      code\n      name\n    }\n  }\n}",
+        "variables": "{\n  \n}",
+        "operationName": "",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      }
+    },
+    {
+      "id": "c4e3c87a-b125-4c53-a527-919231809efb",
+      "name": "PokeApi",
+      "requestMode": "graphql",
+      "response": [],
+      "data": {
+        "isran": false
+      },
+      "auth": {
+        "type": "noauth",
+        "basic": []
+      },
+      "variable": [],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "https://beta.pokeapi.co/graphql/v1/beta"
+        },
+        "body": {
+          "mode": "graphql",
+          "graphql": {
+            "query": "query Query {\n    id\n}",
+            "variables": "{\n  \n}",
+            "operationName": ""
+          }
+        }
+      },
+      "graphql": {
+        "url": "https://beta.pokeapi.co/graphql/v1/beta",
+        "query": "query Query {\n    id\n}",
+        "variables": "{\n  \n}",
+        "operationName": "",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      }
+    }
+  ],
+  "auth": {
+    "type": "noauth",
+    "basic": []
+  },
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [],
+  "id": "3c23a3be-719d-4222-be61-810a8e568fb3"
+}

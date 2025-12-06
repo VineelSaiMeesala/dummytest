@@ -1,0 +1,562 @@
+{
+  "info": {
+    "_postman_id": "992a5403-2339-4b1b-a089-5f2b32272dda",
+    "name": "BlogWiki_API_News",
+    "description": "This offical RESTAPI for **BlogWiki** news website. This API are used to control posts in BloWiki website using all 4 CRUD operation.\n\nBelow are the URLs where API are live\n\nDEV local: [http://localhost:3000/api/posts/](http://localhost:3000/api/posts/)\n\nCyclic urls:\n\n1. https://bwapi-vineelsaimeesalas-projects.vercel.app",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "21787997"
+  },
+  "item": [
+    {
+      "name": "Login",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "var json = pm.response.json();\r",
+              "pm.environment.set('token', json.token);\r",
+              "\r",
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Response time is less than 5000ms\", function () {\r",
+              "    pm.expect(pm.response.responseTime).to.be.below(5000);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"email\":\"superadmin@adminblogwiki.in\",\r\n    \"password\":\"#Blogwiki@Venkata$6564\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{APIUrl}}/api/v1/auth/login/",
+          "host": [
+            "{{APIUrl}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "auth",
+            "login",
+            ""
+          ]
+        }
+      },
+      "response": [],
+      "id": "53e05527-1a8f-49ec-9897-1fcca5f7a5d7"
+    },
+    {
+      "name": "AddPost News",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"StatusCode = 200\", function () {",
+              "   pm.response.to.have.status(200);",
+              "});",
+              "pm.test(\"Save ID in environment variable\", function () {",
+              "    pm.environment.set(\"PostId\", pm.response.json()._id);",
+              "});",
+              "pm.test(\"Response time is less than 2500ms\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(2500);",
+              "});",
+              "",
+              "var jsonData = pm.response.json();",
+              "",
+              "pm.test(\"Sector = news\", ()=> {",
+              "    pm.expect(jsonData.Sector).to.equals(\"news\")",
+              "});",
+              "",
+              "pm.test(\"title = Smoke news colelction title example\", ()=> {",
+              "    pm.expect(jsonData.title).to.equals(\"Smoke news colelction title example\")",
+              "});",
+              "",
+              "pm.test(\"content = Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has\", ()=> {",
+              "    pm.expect(jsonData.content).to.equals(\"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has\")",
+              "});",
+              "",
+              "pm.test(\"author = Microservices-Admin\", ()=> {",
+              "    pm.expect(jsonData.author).to.equals(\"Microservices-Admin\")",
+              "});",
+              "",
+              "pm.test(\"thumbnailUrl = https://amazon.ca\", ()=> {",
+              "    pm.expect(jsonData.thumbnailUrl).to.equals(\"https://amazon.ca\")",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "text/html",
+            "type": "text",
+            "disabled": true
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n\t\"Sector\":\"{{data1}}\",\r\n\t\"title\": \"{{data2}}\",\r\n\t\"author\":\"{{data3}}\",\r\n\t\"thumbnailUrl\":\"https://amazon.ca\",\r\n\t\"relatedImageUrls\":[\"https://amazon.ca\",\"https://amazon.ca\"]\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{APIUrl}}/api/v1//posts/addposts/",
+          "host": [
+            "{{APIUrl}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "",
+            "posts",
+            "addposts",
+            ""
+          ]
+        }
+      },
+      "response": [],
+      "id": "215092b6-2f8b-4ca0-b048-f4aba99768bb"
+    },
+    {
+      "name": "GetAllPost by id",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Response time is less than 2500ms\", function () {\r",
+              "    pm.expect(pm.response.responseTime).to.be.below(2500);\r",
+              "});\r",
+              "var jsonData = pm.response.json();\r",
+              "\r",
+              "pm.test(\"Sector = news\", ()=> {\r",
+              "    pm.expect(jsonData.Sector).to.equals(\"news\")\r",
+              "});\r",
+              "\r",
+              "pm.test(\"title = Smoke news colelction title example\", ()=> {\r",
+              "    pm.expect(jsonData.title).to.equals(\"Smoke news colelction title example\")\r",
+              "});\r",
+              "\r",
+              "pm.test(\"content = Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has\", ()=> {\r",
+              "    pm.expect(jsonData.content).to.equals(\"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has\")\r",
+              "});\r",
+              "\r",
+              "pm.test(\"author = Microservices-Admin\", ()=> {\r",
+              "    pm.expect(jsonData.author).to.equals(\"Microservices-Admin\")\r",
+              "});\r",
+              "\r",
+              "pm.test(\"thumbnailUrl = https://amazon.ca\", ()=> {\r",
+              "    pm.expect(jsonData.thumbnailUrl).to.equals(\"https://amazon.ca\")\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{APIUrl}}/api/v1/posts/FilterById/:id",
+          "host": [
+            "{{APIUrl}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "posts",
+            "FilterById",
+            ":id"
+          ],
+          "variable": [
+            {
+              "key": "id",
+              "value": "{{PostId}}"
+            }
+          ]
+        }
+      },
+      "response": [],
+      "id": "3b16b616-c3c1-4047-b0fe-f96ef11f625c"
+    },
+    {
+      "name": "GetNews",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "var jsonData = pm.response.json();\r",
+              "\r",
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "pm.test(\"Response time is less than 2500ms\", function () {\r",
+              "    pm.expect(pm.response.responseTime).to.be.below(2500);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{APIUrl}}/api/v1/posts/getposts/News",
+          "host": [
+            "{{APIUrl}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "posts",
+            "getposts",
+            "News"
+          ]
+        }
+      },
+      "response": [],
+      "id": "8f4bff65-22d6-4940-b03e-6440d836a379"
+    },
+    {
+      "name": "latestpost",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "pm.test(\"Response time is less than 2500ms\", function () {\r",
+              "    pm.expect(pm.response.responseTime).to.be.below(2500);\r",
+              "});\r",
+              "\r",
+              "var jsonData = pm.response.json();\r",
+              "\r",
+              "pm.test(\"Sector = news\", ()=> {\r",
+              "    pm.expect(jsonData[0].Sector).to.equals(\"news\")\r",
+              "});\r",
+              "\r",
+              "pm.test(\"title = Smoke news colelction title example\", ()=> {\r",
+              "    pm.expect(jsonData[0].title).to.equals(\"Smoke news colelction title example\")\r",
+              "});\r",
+              "\r",
+              "pm.test(\"content = Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has\", ()=> {\r",
+              "    pm.expect(jsonData[0].content).to.equals(\"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has\")\r",
+              "});\r",
+              "\r",
+              "pm.test(\"author = Microservices-Admin\", ()=> {\r",
+              "    pm.expect(jsonData[0].author).to.equals(\"Microservices-Admin\")\r",
+              "});\r",
+              "\r",
+              "pm.test(\"thumbnailUrl = https://amazon.ca\", ()=> {\r",
+              "    pm.expect(jsonData[0].thumbnailUrl).to.equals(\"https://amazon.ca\")\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{APIUrl}}/api/v1/posts/latestPost/",
+          "host": [
+            "{{APIUrl}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "posts",
+            "latestPost",
+            ""
+          ]
+        }
+      },
+      "response": [],
+      "id": "6c799abb-8931-4f5a-b668-a2b817dd60e6"
+    },
+    {
+      "name": "updatePost Live",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "pm.test(\"Save ID in environment variable\", function () {\r",
+              "    pm.environment.set(\"PostId\", pm.response.json()._id);\r",
+              "});\r",
+              "pm.test(\"Response time is less than 5000ms\", function () {\r",
+              "    pm.expect(pm.response.responseTime).to.be.below(5000);\r",
+              "});\r",
+              "\r",
+              "var jsonData = pm.response.json();\r",
+              "\r",
+              "pm.test(\"Sector = news\", ()=> {\r",
+              "    pm.expect(jsonData.Sector).to.equals(\"news\")\r",
+              "});\r",
+              "\r",
+              "pm.test(\"title = Smoke news colelction title example\", ()=> {\r",
+              "    pm.expect(jsonData.title).to.equals(\"Smoke news colelction title example\")\r",
+              "});\r",
+              "\r",
+              "pm.test(\"content = World leaders have come together at the COP26 climate summit in Glasgow to negotiate a landmark agreement aimed at addressing the urgent threat of global climate change. The agreement includes ambitious targets for reducing greenhouse gas emissions, transitioning to renewable energy sources, and protecting vulnerable communities from the impacts of climate change. Key initiatives outlined in the agreement include increased funding for climate adaptation and resilience projects in developing countries, as well as commitments to phase out coal-fired power plants and invest in clean energy technologies. The COP26 summit represents a critical step forward in the global fight against climate change, signaling a renewed sense of urgency and collaboration among nations to safeguard the planet for future generations.World leaders have come together at the COP26 climate summit in Glasgow to negotiate a landmark agreement aimed at addressing the urgent threat of global climate change. The agreement includes ambitious targets for reducing greenhouse gas emissions, transitioning to renewable energy sources, and protecting vulnerable communities from the impacts of climate change. Key initiatives outlined in the agreement include increased funding for climate adaptation and resilience projects in developing countries, as well as commitments to phase out coal-fired power plants and invest in clean energy technologies. The COP26 summit represents a critical step forward in the global fight against climate change, signaling a renewed sense of urgency and collaboration among nations to safeguard the planet for future generations.World leaders have come together at the COP26 climate summit in Glasgow to negotiate a landmark agreement aimed at addressing the urgent threat of global climate change. The agreement includes ambitious targets for reducing greenhouse gas emissions, transitioning to renewable energy sources, and protecting vulnerable communities from the impacts of climate change. Key initiatives outlined in the agreement include increased funding for climate adaptation and resilience projects in developing countries, as well as commitments to phase out coal-fired power plants and invest in clean energy technologies. The COP26 summit represents a critical step forward in the global fight against climate change, signaling a renewed sense of urgency and collaboration among nations to safeguard the planet for future generations.World leaders have come together at the COP26 climate summit in Glasgow to negotiate a landmark agreement aimed at addressing the urgent threat of global climate change. The agreement includes ambitious targets for reducing greenhouse gas emissions, transitioning to renewable energy sources, and protecting vulnerable communities from the impacts of climate change. Key initiatives outlined in the agreement include increased funding for climate adaptation and resilience projects in developing countries, as well as commitments to phase out coal-fired power plants and invest in clean energy technologies. The COP26 summit represents a critical step forward in the global fight against climate change, signaling a renewed sense of urgency and collaboration among nations to safeguard the planet for future generations.\", ()=> {\r",
+              "    pm.expect(jsonData.content).to.equals(\"World leaders have come together at the COP26 climate summit in Glasgow to negotiate a landmark agreement aimed at addressing the urgent threat of global climate change. The agreement includes ambitious targets for reducing greenhouse gas emissions, transitioning to renewable energy sources, and protecting vulnerable communities from the impacts of climate change. Key initiatives outlined in the agreement include increased funding for climate adaptation and resilience projects in developing countries, as well as commitments to phase out coal-fired power plants and invest in clean energy technologies. The COP26 summit represents a critical step forward in the global fight against climate change, signaling a renewed sense of urgency and collaboration among nations to safeguard the planet for future generations.World leaders have come together at the COP26 climate summit in Glasgow to negotiate a landmark agreement aimed at addressing the urgent threat of global climate change. The agreement includes ambitious targets for reducing greenhouse gas emissions, transitioning to renewable energy sources, and protecting vulnerable communities from the impacts of climate change. Key initiatives outlined in the agreement include increased funding for climate adaptation and resilience projects in developing countries, as well as commitments to phase out coal-fired power plants and invest in clean energy technologies. The COP26 summit represents a critical step forward in the global fight against climate change, signaling a renewed sense of urgency and collaboration among nations to safeguard the planet for future generations.World leaders have come together at the COP26 climate summit in Glasgow to negotiate a landmark agreement aimed at addressing the urgent threat of global climate change. The agreement includes ambitious targets for reducing greenhouse gas emissions, transitioning to renewable energy sources, and protecting vulnerable communities from the impacts of climate change. Key initiatives outlined in the agreement include increased funding for climate adaptation and resilience projects in developing countries, as well as commitments to phase out coal-fired power plants and invest in clean energy technologies. The COP26 summit represents a critical step forward in the global fight against climate change, signaling a renewed sense of urgency and collaboration among nations to safeguard the planet for future generations.World leaders have come together at the COP26 climate summit in Glasgow to negotiate a landmark agreement aimed at addressing the urgent threat of global climate change. The agreement includes ambitious targets for reducing greenhouse gas emissions, transitioning to renewable energy sources, and protecting vulnerable communities from the impacts of climate change. Key initiatives outlined in the agreement include increased funding for climate adaptation and resilience projects in developing countries, as well as commitments to phase out coal-fired power plants and invest in clean energy technologies. The COP26 summit represents a critical step forward in the global fight against climate change, signaling a renewed sense of urgency and collaboration among nations to safeguard the planet for future generations.\")\r",
+              "});\r",
+              "\r",
+              "pm.test(\"author = Microservices-Admin\", ()=> {\r",
+              "    pm.expect(jsonData.author).to.equals(\"Microservices-Admin\")\r",
+              "});\r",
+              "\r",
+              "pm.test(\"thumbnailUrl = https://amazon.ca\", ()=> {\r",
+              "    pm.expect(jsonData.thumbnailUrl).to.equals(\"https://amazon.ca\")\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"content\":\"{{data1}}\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{APIUrl}}/api/v1/posts/updateposts/:id",
+          "host": [
+            "{{APIUrl}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "posts",
+            "updateposts",
+            ":id"
+          ],
+          "variable": [
+            {
+              "key": "id",
+              "value": "{{PostId}}"
+            }
+          ]
+        }
+      },
+      "response": [],
+      "id": "3a9e5ba7-7441-49fc-95aa-d36b4631b6fc"
+    },
+    {
+      "name": "DeletePost Live",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "pm.test(\"Response time is less than 2500ms\", function () {\r",
+              "    pm.expect(pm.response.responseTime).to.be.below(2500);\r",
+              "});\r",
+              "\r",
+              "var jsonData = pm.response.json();\r",
+              "\r",
+              "pm.test(\"message = Post deleted Successfully\", ()=> {\r",
+              "    pm.expect(jsonData.message).to.equals(\"Post deleted Successfully\")\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{APIUrl}}/api/v1/posts/deleteposts/:id",
+          "host": [
+            "{{APIUrl}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "posts",
+            "deleteposts",
+            ":id"
+          ],
+          "variable": [
+            {
+              "key": "id",
+              "value": "{{PostId}}"
+            }
+          ]
+        }
+      },
+      "response": [],
+      "id": "c33c9d93-3e64-42f8-90e6-558ba3c2ae30"
+    },
+    {
+      "name": "GetPost by id",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Response time is less than 2500ms\", function () {\r",
+              "    pm.expect(pm.response.responseTime).to.be.below(2500);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{APIUrl}}/api/v1/posts/FilterById/:id",
+          "host": [
+            "{{APIUrl}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "posts",
+            "FilterById",
+            ":id"
+          ],
+          "variable": [
+            {
+              "key": "id",
+              "value": "{{PostId}}"
+            }
+          ]
+        }
+      },
+      "response": [],
+      "id": "d295617a-da87-4692-b20a-f48484525d45"
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "url",
+      "value": "https://bwapi.vercel.app/"
+    }
+  ],
+  "auth": {
+    "type": "noauth"
+  },
+  "id": "992a5403-2339-4b1b-a089-5f2b32272dda"
+}

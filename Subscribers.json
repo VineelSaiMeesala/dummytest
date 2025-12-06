@@ -8,7 +8,17 @@
   },
   "item": [
     {
+      "id": "837b004a-b42f-4427-b928-819b85b6a807",
       "name": "getSubsciberEmail",
+      "requestMode": "rest",
+      "response": [],
+      "data": {
+        "isran": false
+      },
+      "auth": {
+        "type": "noauth"
+      },
+      "variable": [],
       "event": [
         {
           "listen": "test",
@@ -29,11 +39,6 @@
           }
         }
       ],
-      "response": [],
-      "requestMode": "rest",
-      "data": {
-        "isran": false
-      },
       "request": {
         "method": "GET",
         "header": [
@@ -64,15 +69,8 @@
         "url": {
           "raw": "{{APIUrl}}/api/v1/subscriber/getSubsciberEmail",
           "protocol": "http",
-          "host": [
-            "{{APIUrl}}"
-          ],
-          "path": [
-            "api",
-            "v1",
-            "subscriber",
-            "getSubsciberEmail"
-          ],
+          "host": [],
+          "path": [],
           "variable": [],
           "query": []
         },
@@ -85,8 +83,7 @@
             }
           }
         }
-      },
-      "id": "837b004a-b42f-4427-b928-819b85b6a807"
+      }
     },
     {
       "id": "5efa4ca8-3537-4a56-b7d0-edadc34fec02",
@@ -147,13 +144,17 @@
       }
     },
     {
+      "id": "7fad4d43-b7bc-4d31-87cc-c843fa836150",
       "name": "gRPC 4",
-      "event": [],
-      "response": [],
       "requestMode": "grpc",
+      "response": [],
       "data": {
         "isran": false
       },
+      "auth": {
+        "type": "noauth"
+      },
+      "variable": [],
       "grpc": {
         "url": "localhost:50051",
         "service": "greeter.Greeter",
@@ -166,19 +167,7 @@
           "name": "greeter.proto",
           "content": "syntax = \"proto3\";\r\n\r\npackage greeter;\r\n\r\nservice Greeter {\r\n  rpc SayHello (HelloRequest) returns (HelloReply);\r\n}\r\n\r\nmessage HelloRequest {\r\n  string name = 1;\r\n}\r\n\r\nmessage HelloReply {\r\n  string message = 1;\r\n}"
         }
-      },
-      "request": {
-        "method": "GET",
-        "url": {
-          "raw": "localhost:50051",
-          "host": [
-            "localhost:50051"
-          ],
-          "path": []
-        },
-        "description": "gRPC Request: greeter.Greeter/SayHello"
-      },
-      "id": "7fad4d43-b7bc-4d31-87cc-c843fa836150"
+      }
     }
   ],
   "auth": {

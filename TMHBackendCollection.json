@@ -906,8 +906,7 @@
     }
   ],
   "auth": {
-    "type": "noauth",
-    "basic": []
+    "type": "noauth"
   },
   "event": [
     {

@@ -1,0 +1,292 @@
+{
+  "info": {
+    "_postman_id": "multi-protocol-demo-collection",
+    "name": "Multi-Protocol Demo",
+    "description": "Demonstrates full multi-protocol chaining with variable extraction.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "testmasterhub"
+  },
+  "item": [
+    {
+      "name": "1) REST Login",
+      "requestMode": "rest",
+      "data": {
+        "isran": false
+      },
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "exec": [],
+            "type": "text/javascript",
+            "packages": {}
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "exec": [],
+            "type": "text/javascript",
+            "packages": {}
+          }
+        }
+      ],
+      "flow": {
+        "extractVariables": {
+          "token": "token",
+          "userId": "user.id"
+        }
+      },
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "auth": {
+          "type": "none"
+        },
+        "url": {
+          "raw": "{{AuthBaseUrl}}/auth/login",
+          "host": [
+            "{{AuthBaseUrl}}"
+          ],
+          "path": [
+            "auth",
+            "login"
+          ],
+          "query": [],
+          "variable": []
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"username\": \"{{username}}\",\n  \"password\": \"{{password}}\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "id": "6b218c8a-477a-4264-a6da-527b6b80aa6b"
+    },
+    {
+      "name": "2) GraphQL Get User Profile",
+      "requestMode": "graphql",
+      "data": {
+        "isran": false
+      },
+      "event": [],
+      "flow": {
+        "extractVariables": {
+          "planId": "data.user.plan.id",
+          "grpcTopic": "data.user.plan.grpcTopic",
+          "wsChannel": "data.user.wsChannel"
+        }
+      },
+      "graphql": {
+        "url": "{{GraphQLBaseUrl}}/graphql",
+        "query": "query GetUser($id: ID!) { user(id: $id) { id email plan { id name grpcTopic } wsChannel } }",
+        "variables": "{ \"id\": \"{{userId}}\" }",
+        "operationName": "GetUser",
+        "headers": {
+          "Content-Type": "application/json",
+          "Authorization": "Bearer {{token}}"
+        }
+      },
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "url": {
+          "raw": "{{GraphQLBaseUrl}}/graphql",
+          "host": [
+            "{{GraphQLBaseUrl}}"
+          ],
+          "path": [
+            "graphql"
+          ]
+        },
+        "body": {
+          "mode": "graphql",
+          "graphql": {
+            "query": "query GetUser($id: ID!) { user(id: $id) { id email plan { id name grpcTopic } wsChannel } }",
+            "variables": "{ \"id\": \"{{userId}}\" }"
+          }
+        }
+      },
+      "id": "0e68df34-b839-4d39-a148-9c40456378b4"
+    },
+    {
+      "name": "3) gRPC Get Plan Details",
+      "requestMode": "grpc",
+      "data": {
+        "isran": false
+      },
+      "event": [],
+      "flow": {
+        "extractVariables": {
+          "wsPayload": "websocket_payload"
+        }
+      },
+      "grpc": {
+        "url": "{{GrpcBaseUrl}}",
+        "service": "plans.PlanService",
+        "method": "GetPlanDetails",
+        "message": "{ \"id\": \"{{planId}}\", \"topic\": \"{{grpcTopic}}\" }",
+        "metadata": {
+          "x-auth-token": "{{token}}"
+        },
+        "streamType": "unary",
+        "secure": true,
+        "protoFile": {
+          "name": "plan.proto",
+          "content": "syntax = \"proto3\";\npackage plans;\nservice PlanService { rpc GetPlanDetails(PlanRequest) returns (PlanResponse); }\nmessage PlanRequest { string id = 1; string topic = 2; }\nmessage PlanResponse { string id = 1; string name = 2; string websocket_payload = 3; }"
+        }
+      },
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{GrpcBaseUrl}}",
+          "host": [
+            "{{GrpcBaseUrl}}"
+          ],
+          "path": []
+        }
+      },
+      "id": "cfe4b392-5c16-483e-80fb-951051398915"
+    },
+    {
+      "name": "4) WebSocket Notify",
+      "requestMode": "websocket",
+      "data": {
+        "isran": false
+      },
+      "event": [],
+      "flow": {
+        "extractVariables": {
+          "wsAckId": "ackId"
+        }
+      },
+      "websocket": {
+        "url": "{{WebSocketBaseUrl}}/notifications",
+        "headers": {
+          "Authorization": "Bearer {{token}}"
+        },
+        "message": "{\n  \"action\": \"SEND_NOTIFICATION\",\n  \"channel\": \"{{wsChannel}}\",\n  \"payload\": {{wsPayload}}\n}"
+      },
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{WebSocketBaseUrl}}/notifications",
+          "host": [
+            "{{WebSocketBaseUrl}}"
+          ],
+          "path": [
+            "notifications"
+          ]
+        }
+      },
+      "id": "944545d3-0d2b-47b0-8d01-102c5447bf51"
+    },
+    {
+      "id": "4c6201e8-5c3d-41ec-9854-10e5c0a06bcb",
+      "name": "Graph",
+      "requestMode": "graphql",
+      "data": {
+        "apiResponse": null,
+        "authToken": "",
+        "authType": "Bearer",
+        "basicAuth": {
+          "username": "",
+          "password": ""
+        },
+        "headers": {
+          "Accept-Encoding": "gzip, deflate, br",
+          "User-Agent": "TestMasterHub/1.0 (Windows NT 10.0; Win64; x64)",
+          "Accept": "application/json",
+          "Connection": "keep-alive"
+        },
+        "isLoading": false,
+        "pathParams": [
+          {
+            "description": "",
+            "key": "",
+            "value": ""
+          }
+        ],
+        "preRequestScript": "",
+        "queryParams": [
+          {
+            "description": "",
+            "key": "",
+            "value": ""
+          }
+        ],
+        "requestBody": "",
+        "requestType": "get",
+        "statusCode": null,
+        "testScript": "",
+        "url": "",
+        "urlError": false,
+        "graphqlData": {
+          "url": "",
+          "query": "",
+          "variables": ""
+        },
+        "websocketData": {
+          "url": ""
+        },
+        "grpcData": {
+          "url": "",
+          "service": "",
+          "method": ""
+        }
+      },
+      "event": [],
+      "response": []
+    }
+  ],
+  "auth": {
+    "type": "noauth"
+  },
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [],
+  "id": "multi-protocol-demo-collection",
+  "name": "Multi-Protocol Demo"
+}

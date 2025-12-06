@@ -1,0 +1,38 @@
+{
+  "info": {
+    "_testmasterhub_id": "9c5a1a50-a8ad-4a43-b85d-efd7382f1c23",
+    "_exporter_id": "14bf1d95-74d3-4215-aa3c-78ed4fd2e97b",
+    "name": "SadReality",
+    "description": "This is a new collection",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [],
+  "auth": {
+    "type": "noauth"
+  },
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [],
+  "id": "9c5a1a50-a8ad-4a43-b85d-efd7382f1c23",
+  "name": "SadReality"
+}
