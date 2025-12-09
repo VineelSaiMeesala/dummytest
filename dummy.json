@@ -1,157 +1,95 @@
 {
   "info": {
-    "_testmasterhub_id": "309516a2-faa2-422b-9911-b682c8467d02",
-    "_exporter_id": "405646b3-51fd-465b-ba55-8634477206fe",
-    "name": "tmhCollection",
-    "description": "This is a new collection",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    "_testmasterhub_id": "db6a2c6c-afc8-4b01-84d8-7705322c41d2",
+    "name": "dummy",
+    "schema": "https://schema.gettmh.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "21787997"
   },
   "item": [
     {
-      "id": "4b332ff4-5758-4896-be06-3efffb20d021",
-      "name": "TMHRestGet",
-      "requestMode": "rest",
-      "response": [],
-      "data": {
-        "isran": false
-      },
-      "auth": {
-        "type": "noauth",
-        "basic": []
-      },
-      "variable": [],
+      "name": "req",
       "event": [
         {
           "listen": "test",
           "script": {
-            "exec": [],
+            "exec": [
+              "TMH.expect(undefinedVariable).toBe(1);"
+            ],
             "type": "text/javascript",
-            "packages": {}
+            "packages": {},
+            "requests": {}
           }
         },
         {
           "listen": "prerequest",
           "script": {
-            "exec": [],
+            "exec": [
+              "TMH.expect(undefinedVariable).toBe(1);"
+            ],
             "type": "text/javascript",
-            "packages": {}
-          }
-        }
-      ],
-      "request": {
-        "method": "GET",
-        "header": [
-          {
-            "key": "Accept-Encoding",
-            "value": "gzip, deflate, br"
-          },
-          {
-            "key": "User-Agent",
-            "value": "TestMasterHub/1.0"
-          },
-          {
-            "key": "Accept",
-            "value": "application/json"
-          },
-          {
-            "key": "Connection",
-            "value": "keep-alive"
-          },
-          {
-            "key": "Content-Type",
-            "value": "application/json"
-          }
-        ],
-        "auth": {
-          "type": "bearer",
-          "bearer": [
-            {
-              "key": "token",
-              "value": "",
-              "type": "string"
-            }
-          ]
-        },
-        "url": {
-          "raw": "https://example.com/get",
-          "protocol": "https",
-          "host": [
-            "example",
-            "com"
-          ],
-          "path": [
-            "get"
-          ],
-          "variable": [],
-          "query": []
-        },
-        "body": {
-          "mode": "raw",
-          "raw": "",
-          "options": {
-            "raw": {
-              "language": "json"
-            }
-          }
-        }
-      }
-    },
-    {
-      "id": "31fce590-69e6-4eb0-b7e8-fa96bc700abf",
-      "name": "Request 4",
-      "requestMode": "rest",
-      "response": [],
-      "data": {
-        "isran": false
-      },
-      "auth": {
-        "type": "noauth",
-        "basic": []
-      },
-      "variable": [],
-      "event": [
-        {
-          "listen": "test",
-          "script": {
-            "exec": [],
-            "type": "text/javascript",
-            "packages": {}
-          }
-        },
-        {
-          "listen": "prerequest",
-          "script": {
-            "exec": [],
-            "type": "text/javascript",
-            "packages": {}
+            "packages": {},
+            "requests": {}
           }
         }
       ],
       "request": {
         "method": "POST",
-        "header": [
-          {
-            "key": "Accept-Encoding",
-            "value": "gzip, deflate, br"
-          },
-          {
-            "key": "User-Agent",
-            "value": "TestMasterHub/2.1.0"
-          },
-          {
-            "key": "Accept",
-            "value": "application/json"
-          },
-          {
-            "key": "Connection",
-            "value": "keep-alive"
-          }
-        ],
-        "auth": {
-          "type": "none"
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "user",
+              "value": "vinnel",
+              "type": "text"
+            },
+            {
+              "key": "password",
+              "value": "",
+              "type": "text"
+            }
+          ]
         },
         "url": {
-          "raw": "https://postman-echo.com/post",
+          "raw": "https://reqres.in/api/users/:id",
+          "protocol": "https",
+          "host": [
+            "reqres",
+            "in"
+          ],
+          "path": [
+            "api",
+            "users",
+            ":id"
+          ],
+          "variable": [
+            {
+              "key": "id",
+              "value": "2"
+            }
+          ]
+        }
+      },
+      "response": [],
+      "id": "be46134b-7d66-409b-be23-23ebb16aadc5"
+    },
+    {
+      "name": "New Request",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "file",
+              "type": "file",
+              "src": "/C:/Users/vinee/Downloads/tmhCollection_Build_Report_5.html"
+            }
+          ]
+        },
+        "url": {
+          "raw": "https://tmh-echo.com/post",
           "protocol": "https",
           "host": [
             "postman-echo",
@@ -159,28 +97,16 @@
           ],
           "path": [
             "post"
-          ],
-          "variable": [],
-          "query": []
-        },
-        "body": {
-          "mode": "formdata",
-          "formdata": [
-            {
-              "key": "test",
-              "type": "file",
-              "value": "E:\\__Tests__\\TMH-Testing Collection\\Environments\\BlogWiki Prod.postman_environment.json",
-              "description": "",
-              "disabled": false
-            }
           ]
         }
-      }
+      },
+      "response": [],
+      "id": "2a45ee36-ac5d-4d22-8238-5d89ae575ebe"
     },
     {
-      "id": "83f25adb-4d16-4b00-8efb-3a7b363766dc",
-      "name": "Grpctest",
-      "requestMode": "grpc",
+      "id": "46497f3b-9c54-430d-b4c3-0edcf2b34bda",
+      "name": "HellowWeb",
+      "requestMode": "websocket",
       "data": {
         "apiResponse": null,
         "authToken": "",
@@ -235,95 +161,8 @@
       "response": []
     },
     {
-      "id": "df35260c-98d2-4dfc-a5ec-5195d3957ef5",
-      "name": ":uid?key=value&foo=bar",
-      "requestMode": "rest",
-      "response": [],
-      "data": {
-        "isran": false
-      },
-      "event": [
-        {
-          "listen": "test",
-          "script": {
-            "exec": [],
-            "type": "text/javascript",
-            "packages": {}
-          }
-        },
-        {
-          "listen": "prerequest",
-          "script": {
-            "exec": [],
-            "type": "text/javascript",
-            "packages": {}
-          }
-        }
-      ],
-      "request": {
-        "method": "GET",
-        "header": [
-          {
-            "key": "Accept-Encoding",
-            "value": "gzip, deflate, br"
-          },
-          {
-            "key": "User-Agent",
-            "value": "TestMasterHub/2.1.0"
-          },
-          {
-            "key": "Accept",
-            "value": "application/json"
-          },
-          {
-            "key": "Connection",
-            "value": "keep-alive"
-          }
-        ],
-        "auth": {
-          "type": "none"
-        },
-        "url": {
-          "raw": "http://localhost:7275/v1/api/premiumusersmanagement/user-coupons/:uid?key=value&foo=bar",
-          "protocol": "http",
-          "host": [
-            "localhost:7275"
-          ],
-          "path": [
-            "v1",
-            "api",
-            "premiumusersmanagement",
-            "user-coupons",
-            ":uid?key=value&foo=bar"
-          ],
-          "variable": [],
-          "query": [
-            {
-              "key": "key",
-              "value": "value",
-              "description": ""
-            },
-            {
-              "key": "foo",
-              "value": "bar",
-              "description": ""
-            }
-          ]
-        },
-        "body": {
-          "mode": "raw",
-          "raw": "",
-          "options": {
-            "raw": {
-              "language": "json"
-            }
-          }
-        }
-      }
-    },
-    {
-      "id": "a6a41578-8468-4603-b0ef-f8410f1ff3af",
-      "name": "Request 3",
+      "id": "cb9b1cc1-b088-4b0c-832c-254f2f09a1e9",
+      "name": "Request 5",
       "requestMode": "rest",
       "response": [],
       "data": {
@@ -387,6 +226,136 @@
           {
             "key": "Connection",
             "value": "keep-alive"
+          }
+        ],
+        "auth": {
+          "type": "none"
+        },
+        "url": {
+          "raw": "",
+          "protocol": "http",
+          "host": [],
+          "path": [],
+          "variable": [],
+          "query": []
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "2acbd75a-faea-46c6-a24f-b6ed16a87c3d",
+      "name": "Heeh",
+      "requestMode": "graphql",
+      "data": {
+        "apiResponse": null,
+        "authToken": "",
+        "authType": "Bearer",
+        "basicAuth": {
+          "username": "",
+          "password": ""
+        },
+        "headers": {
+          "Accept-Encoding": "gzip, deflate, br",
+          "User-Agent": "TestMasterHub/1.0 (Windows NT 10.0; Win64; x64)",
+          "Accept": "application/json",
+          "Connection": "keep-alive"
+        },
+        "isLoading": false,
+        "pathParams": [
+          {
+            "description": "",
+            "key": "",
+            "value": ""
+          }
+        ],
+        "preRequestScript": "",
+        "queryParams": [
+          {
+            "description": "",
+            "key": "",
+            "value": ""
+          }
+        ],
+        "requestBody": "",
+        "requestType": "get",
+        "statusCode": null,
+        "testScript": "",
+        "url": "",
+        "urlError": false,
+        "graphqlData": {
+          "url": "",
+          "query": "",
+          "variables": ""
+        },
+        "websocketData": {
+          "url": ""
+        },
+        "grpcData": {
+          "url": "",
+          "service": "",
+          "method": ""
+        }
+      },
+      "event": [],
+      "response": []
+    },
+    {
+      "id": "c7c03841-c703-4c1e-8126-2af6948c34d3",
+      "name": "Request 7",
+      "requestMode": "rest",
+      "response": [],
+      "data": {
+        "isran": false
+      },
+      "auth": {
+        "type": "noauth",
+        "basic": []
+      },
+      "variable": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [],
+            "type": "text/javascript",
+            "packages": {}
+          }
+        },
+        {
+          "listen": "prerequest",
+          "script": {
+            "exec": [],
+            "type": "text/javascript",
+            "packages": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept-Encoding",
+            "value": "gzip, deflate, br"
+          },
+          {
+            "key": "User-Agent",
+            "value": "TestMasterHub/2.1.0"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json"
+          },
+          {
+            "key": "Connection",
+            "value": "keep-alive"
           },
           {
             "key": "Content-Type",
@@ -397,16 +366,15 @@
           "type": "none"
         },
         "url": {
-          "raw": "https://restful-booker.herokuapp.com/booking/:0",
+          "raw": "https://automationexercise.com/api/productsList",
           "protocol": "https",
           "host": [
-            "restful-booker",
-            "herokuapp",
+            "automationexercise",
             "com"
           ],
           "path": [
-            "booking",
-            ":0"
+            "api",
+            "productsList"
           ],
           "variable": [],
           "query": []
@@ -424,8 +392,19 @@
     }
   ],
   "auth": {
-    "type": "noauth",
-    "basic": []
+    "type": "basic",
+    "basic": [
+      {
+        "key": "password",
+        "value": "admin",
+        "type": "string"
+      },
+      {
+        "key": "username",
+        "value": "admin",
+        "type": "string"
+      }
+    ]
   },
   "event": [
     {
@@ -434,7 +413,7 @@
         "type": "text/javascript",
         "packages": {},
         "exec": [
-          ""
+          "var json = pm.request.json()"
         ]
       }
     },
@@ -444,11 +423,17 @@
         "type": "text/javascript",
         "packages": {},
         "exec": [
-          ""
+          "var json = pm.request.json()"
         ]
       }
     }
   ],
-  "variable": [],
-  "id": "309516a2-faa2-422b-9911-b682c8467d02"
+  "variable": [
+    {
+      "key": "dummy",
+      "value": "123",
+      "type": "string"
+    }
+  ],
+  "id": "db6a2c6c-afc8-4b01-84d8-7705322c41d2"
 }

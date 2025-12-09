@@ -8,20 +8,18 @@
   },
   "item": [
     {
+      "id": "6b218c8a-477a-4264-a6da-527b6b80aa6b",
       "name": "1) REST Login",
       "requestMode": "rest",
+      "response": [],
       "data": {
         "isran": false
       },
+      "auth": {
+        "type": "noauth"
+      },
+      "variable": [],
       "event": [
-        {
-          "listen": "prerequest",
-          "script": {
-            "exec": [],
-            "type": "text/javascript",
-            "packages": {}
-          }
-        },
         {
           "listen": "test",
           "script": {
@@ -29,23 +27,37 @@
             "type": "text/javascript",
             "packages": {}
           }
+        },
+        {
+          "listen": "prerequest",
+          "script": {
+            "exec": [],
+            "type": "text/javascript",
+            "packages": {}
+          }
         }
       ],
-      "flow": {
-        "extractVariables": {
-          "token": "token",
-          "userId": "user.id"
-        }
-      },
       "request": {
         "method": "POST",
         "header": [
           {
-            "key": "Content-Type",
-            "value": "application/json"
+            "key": "Accept-Encoding",
+            "value": "gzip, deflate, br"
+          },
+          {
+            "key": "User-Agent",
+            "value": "TestMasterHub/2.1.0"
           },
           {
             "key": "Accept",
+            "value": "application/json"
+          },
+          {
+            "key": "Connection",
+            "value": "keep-alive"
+          },
+          {
+            "key": "Content-Type",
             "value": "application/json"
           }
         ],
@@ -54,15 +66,11 @@
         },
         "url": {
           "raw": "{{AuthBaseUrl}}/auth/login",
-          "host": [
-            "{{AuthBaseUrl}}"
-          ],
-          "path": [
-            "auth",
-            "login"
-          ],
-          "query": [],
-          "variable": []
+          "protocol": "http",
+          "host": [],
+          "path": [],
+          "variable": [],
+          "query": []
         },
         "body": {
           "mode": "raw",
@@ -73,8 +81,7 @@
             }
           }
         }
-      },
-      "id": "6b218c8a-477a-4264-a6da-527b6b80aa6b"
+      }
     },
     {
       "name": "2) GraphQL Get User Profile",

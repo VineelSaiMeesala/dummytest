@@ -264,6 +264,23 @@
           "Content-Type": "application/json"
         }
       }
+    },
+    {
+      "id": "f49c7490-2f5e-4268-b94b-b69ef06b1cb2",
+      "name": "WebSocket 6",
+      "requestMode": "websocket",
+      "response": [],
+      "data": {
+        "isran": false
+      },
+      "auth": {
+        "type": "noauth",
+        "basic": []
+      },
+      "variable": [],
+      "websocket": {
+        "url": "wss://stream.binance.com:9443/ws/bnbbtc@depth"
+      }
     }
   ],
   "auth": {
